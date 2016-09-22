@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NC State Library</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <h3>Navigation</h3>
+  <a href="/users">Home</a>
+  <a href="/bookings/new">Book a Room</a>
+
+  <%if(session[:exists]==true) %>
+  <a href="/logout">Logout</a>
+  <a href="/myrooms">My rooms</a>
+  <div>
+  Welcome: 
+  <%= session[:user]["fname"]%>
+
+    <%if(session[:user]["isadmin"]=="TRUE") %>
+    <a href="/users">All users</a>
+    <a href="/bookings">All bookings</a>
+    <a href="/rooms">All rooms</a>
+    <%end%>
+  </div>
+
+
+
+  <%else%>
+  <a href="/login">Login</a>
+  <a href="/users/new">Signup</a>
+  
+  <%end%>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>

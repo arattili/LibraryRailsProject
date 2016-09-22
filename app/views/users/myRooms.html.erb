@@ -1,0 +1,11 @@
+<h2> Rooms You've currently booked </h2>
+<table>
+<tr><th>Room</th>
+<th>Date</th></tr>
+<% @bookedRooms.each do |r| %>
+<tr>
+<th><%= r.name %></th>
+<th><%= r.time %></th>
+</tr>
+<%end%>
+</table>
